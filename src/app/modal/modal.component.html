@@ -1,0 +1,25 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <div>
+      <label for="red">Red</label>
+      <input type="number" name="red" id="red" formControlName="0">
+    </div>
+    <div>
+      <label for="blue">Blue</label>
+      <input type="number" name="blue" id="blue" formControlName="1">
+    </div>
+    <div>
+      <label for="violet">Violet</label>
+      <input type="number" name="violet" id="violet" formControlName="2">
+    </div>
+    <div>
+      <label for="type">Type</label>
+      <select name="type" id="type" formControlName="type">
+        <option value="horizontal">horizontal</option>
+        <option value="vertical">vertical</option>
+        <option value="pie">pie</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>

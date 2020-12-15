@@ -1,0 +1,18 @@
+<div style="width: 800px; margin: auto">
+  <div>
+    <button (click)="addChart()">Add chart</button>
+  </div>
+  <ng-packery [widgetTpl]="chartTpl" [widgets]="charts" (setSize)="onResize($event)" (delete)="onDelete($event)"
+    (edit)="onOpenEdit($event)">
+  </ng-packery>
+  <ng-template let-chart #chartTpl>
+    <ngx-charts-bar-vertical *ngIf="chart.type == 'vertical'" [results]="chart.data"></ngx-charts-bar-vertical>
+    <ngx-charts-bar-horizontal *ngIf="chart.type == 'horizontal'" [results]="chart.data"></ngx-charts-bar-horizontal>
+    <ngx-charts-pie-chart *ngIf="chart.type == 'pie'" [results]="chart.data"></ngx-charts-pie-chart>
+  </ng-template>
+</div>
+<div class="modal" [hidden]="!selectedChart">
+  <div class="modal-content">
+      <app-modal *ngIf="selectedChart" [chart]="selectedChart" (save)="onCloseEdit()" (close)="onCloseEdit()"></app-modal>
+  </div>
+</div>
